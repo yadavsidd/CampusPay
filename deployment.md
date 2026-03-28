@@ -65,6 +65,16 @@ If you see an error like `better-sqlite3 was compiled against a different Node.j
 2.  **Ensure `.gitignore` is present**: I have created a `.gitignore` in your root directory to prevent this in the future.
 3.  **tsx Dependency**: I have moved `tsx` to `dependencies` in `backend/package.json` so it is available on Render without devDependencies.
 
+---
+
+## 🛠️ 6. Troubleshooting: "Failed to Fetch" (CORS/URL)
+
+If you get a "Failed to Fetch" error in production:
+
+1.  **Check Protocols**: Ensure both `VITE_API_URL` (on Vercel) and `CORS_ORIGIN` (on Render) start with `https://`.
+2.  **Trailing Slashes**: Do not include a trailing slash in `VITE_API_URL` (e.g., use `https://api.render.com` not `https://api.render.com/`).
+3.  **Multiple Origins**: If you use Vercel preview deployments, you can pass multiple origins to `CORS_ORIGIN` separated by commas.
+
 ## ✅ 4. Post-Deployment Checklist
 
 1.  **CORS Check**: Ensure the Render backend logs show it's accepting requests from your Vercel domain.

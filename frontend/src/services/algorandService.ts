@@ -7,8 +7,9 @@ if (typeof window !== "undefined" && !window.Buffer) {
   window.Buffer = Buffer;
 }
 
-// Backend API base URL (configurable via env)
-export const API_BASE = import.meta.env.VITE_API_URL || "";
+// Backend API base URL (normalized to remove trailing slash)
+const rawApiUrl = import.meta.env.VITE_API_URL || "";
+export const API_BASE = rawApiUrl.replace(/\/$/, "");
 
 // Constants for Algorand Testnet
 const ALGOD_SERVER = "https://testnet-api.algonode.cloud";
