@@ -49,6 +49,21 @@ By default, the app is configured for **Algorand Testnet**.
     3.  Update the `chainId` in Pera Wallet config to `416001`.
 
 ---
+---
+
+## 🛠️ 5. Troubleshooting: Native Module Mismatch
+
+If you see an error like `better-sqlite3 was compiled against a different Node.js version`:
+
+1.  **Remove `node_modules` from Git**: This error occurs because local `node_modules` were uploaded to GitHub.
+    ```bash
+    git rm -r --cached .
+    git add .
+    git commit -m "chore: remove tracked node_modules"
+    git push
+    ```
+2.  **Ensure `.gitignore` is present**: I have created a `.gitignore` in your root directory to prevent this in the future.
+3.  **tsx Dependency**: I have moved `tsx` to `dependencies` in `backend/package.json` so it is available on Render without devDependencies.
 
 ## ✅ 4. Post-Deployment Checklist
 
